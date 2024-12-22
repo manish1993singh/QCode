@@ -2,11 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import jsQR from 'jsqr';
 import Webcam from 'react-webcam';
 
+
 export interface ILocalScanner {
     dataCallback: (data: String) => {}|void
 }
 const LocalScanner = (props: ILocalScanner) => {
-  const webcamRef = useRef(null);
+  const webcamRef = useRef<Webcam>(null);
   const [qrCodeData, setQrCodeData] = useState<String|null>(null);
   const {dataCallback} = props;
 
@@ -20,13 +21,15 @@ const LocalScanner = (props: ILocalScanner) => {
           image.onload = () => {
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
-            canvas.width = image.width;
+            if(context){
+                canvas.width = image.width;
             canvas.height = image.height;
             context.drawImage(image, 0, 0, canvas.width, canvas.height);
             const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
             const code = jsQR(imageData.data, imageData.width, imageData.height);
             if (code) {
               setQrCodeData(code.data);
+            }
             }
           };
         }

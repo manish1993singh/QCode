@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import LocalScanner from '../components/scanner/local-scanner';
+import LocalScanner from '../../_components/scanner/local-scanner';
 
 function Scan() {
     const [qrCodeData, setQrCodeData] = useState<String|null>('');
