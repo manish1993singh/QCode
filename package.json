@@ -10,6 +10,7 @@
     "secure": "next dev --experimental-https"
   },
   "dependencies": {
+    "@icon-park/react": "^1.4.2",
     "@types/react-webcam": "^3.0.0",
     "jsqr": "^1.4.0",
     "mkcert": "^3.2.0",
@@ -29,6 +30,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
+    "prettier": "^3.4.2",
+    "prettier-plugin-css-order": "^2.1.2",
+    "sass": "^1.83.0",
     "typescript": "^5"
   }
 }

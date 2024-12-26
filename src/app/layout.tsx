@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Head from 'next/head';
 import ServiceWorkerRegistration from './ServiceWorkerRegistration';
 import "./globals.css";
+import Style from "./page.module.scss"
+import Header from "./common-components/header"
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -33,8 +35,12 @@ export default function RootLayout({ children }: Readonly<{
         <title>root title</title>
       </Head>
       <body>
-        {children}
+        <div className={Style.page}>
+          <div className={Style.header_container}><Header/></div>
+          <div className={Style.content}>{children}</div>
+          <div className={Style.footer_container}></div>
         <ServiceWorkerRegistration />
+        </div>
       </body>
     </html>
   );

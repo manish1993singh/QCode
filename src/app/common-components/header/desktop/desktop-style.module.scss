@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+  padding: 10px 20px;
+
+  .brand {
+    display: flex;
+    .name {
+      padding-left: 10px;
+    }
+  }
+  .quick_action {
+    flex: 1;
+  }
+  .hamburger_container {
+    color: #666666;
+    :hover {
+      color: #323232;
+    }
+  }
+}

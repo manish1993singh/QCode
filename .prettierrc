@@ -1,0 +1,22 @@
+{
+  "plugins": ["prettier-plugin-css-order"],
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "parser": "scss",
+        "cssOrder": [],
+        "singleQuote": true,
+        "trailingComma": "none",
+        "tabWidth": 2,
+        "useTabs": false,
+        "endOfLine": "lf",
+        "semi": true,
+        "bracketSpacing": true,
+        "arrowParens": "always",
+        "singleAttributePerLine": true,
+        "proseWrap": "always"
+      }
+    }
+  ]
+}
