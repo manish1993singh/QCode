@@ -10,6 +10,7 @@
     "secure": "next dev --experimental-https"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.2",
     "@icon-park/react": "^1.4.2",
     "@types/react-webcam": "^3.0.0",
     "antd": "^5.22.6",

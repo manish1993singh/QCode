@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Card, Alert } from "antd";
+import { Button, Card, Alert, notification, Space } from "antd";
 import Scanner from "@/app/common-components/scanner/scanner";
 import SearchSelectUser from "@/app/common-components/search-select-user/SearchSelectUser";
 import style from "./link-qcode.module.scss";
@@ -8,6 +8,21 @@ import style from "./link-qcode.module.scss";
 function Scan() {
   const [qrCodeData, setQrCodeData] = useState<String | null>("");
   const [selectedUser, setSelectedUser] = useState<any | null>(null);
+  const [api, contextHolder] = notification.useNotification();
+
+  const linkUser = () => {
+    if (qrCodeData && selectedUser) {
+      api["success"]({
+        message: "Success",
+        description: "The action was successful",
+      });
+    } else {
+      api["error"]({
+        message: "Error",
+        description: "The action was unsuccessful",
+      });
+    }
+  };
 
   return (
     <div>
@@ -32,8 +47,11 @@ function Scan() {
 
       <br />
       <div className={style.link_button_container}>
-        <Button type="primary">link</Button>
+        <Button type="primary" onClick={linkUser}>
+          link
+        </Button>
       </div>
+      {contextHolder}
     </div>
   );
 }
