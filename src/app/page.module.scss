@@ -1,10 +1,11 @@
 .page {
+  background-color: #efefef;
   font-family: var(--font-geist-sans);
 
-  .header_container {
-  }
-
-  .footer_container {
+  .header_container,
+  .footer_container,
+  .content {
+    background-color: #ffffff;
   }
 
   .content {
@@ -12,6 +13,7 @@
     // border: 1px solid;
     padding: 0 5%;
     width: 100%;
+    min-height: 100vh;
   }
 
   @media (min-width: 1025px) {

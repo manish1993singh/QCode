@@ -5,17 +5,17 @@ const { Search: AntdSearch } = Input;
 
 export interface ISeach {
   url: string;
-  onSearch: (data: any) => void | {};
+  result: (data: any) => void | {};
 }
 
-export default function Search({ url, onSearch }: ISeach) {
+export default function Search({ url, result }: ISeach) {
   const [loading, setLoading] = useState(false);
   const search = async (value: String) => {
     console.log(value);
     setLoading(true);
     await fetch(url)
       .then((r) => r.json())
-      .then((data) => onSearch(data))
+      .then((data) => result(data))
       .finally(() => {
         setLoading(false);
       });
