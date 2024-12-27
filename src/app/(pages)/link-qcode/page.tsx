@@ -1,29 +1,39 @@
 "use client";
 import React, { useState } from "react";
-import LocalScanner from "../../_components/scanner/local-scanner";
-import { Button, Modal } from "antd";
-
-import style from "./link-qcode.module.scss";
-import Search from "@/app/common-components/search/search";
+import { Button, Card, Alert } from "antd";
 import Scanner from "@/app/common-components/scanner/scanner";
 import SearchSelectUser from "@/app/common-components/search-select-user/SearchSelectUser";
+import style from "./link-qcode.module.scss";
 
 function Scan() {
   const [qrCodeData, setQrCodeData] = useState<String | null>("");
-  const [user, setUser] = useState<any | null>(null);
+  const [selectedUser, setSelectedUser] = useState<any | null>(null);
 
   return (
     <div>
       <br />
       <h1>Link User</h1>
       <br />
-      {/* {qrCodeData && <div>DATA:{qrCodeData}</div>} */}
-      <Scanner result={setQrCodeData} />
+      <Card className={style.card} title="Scan QR code">
+        <div className={style.card_body}>
+          <Scanner result={setQrCodeData} />
+          {qrCodeData && (
+            <Alert type="success" message="QR code scan successfully" />
+          )}
+        </div>
+      </Card>
       <br />
-      <label>Select user</label>
-      <SearchSelectUser />
+      <Card className={style.card} title="Select user">
+        <div className={style.card_body}>
+          <SearchSelectUser result={setSelectedUser} />
+          {selectedUser && <Alert type="success" message="User selected" />}
+        </div>
+      </Card>
+
       <br />
-      <Button type="primary">link</Button>
+      <div className={style.link_button_container}>
+        <Button type="primary">link</Button>
+      </div>
     </div>
   );
 }

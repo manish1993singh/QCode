@@ -41,9 +41,9 @@ export default function Scanner({ result }: IScanner) {
         >
           Scan
         </Button>
-        {qrCodeData && (
+        {/* {qrCodeData && (
           <CheckCircleFilled style={{ color: "green", fontSize: "24px" }} />
-        )}
+        )} */}
       </div>
       <Modal
         title="Scan QR code"

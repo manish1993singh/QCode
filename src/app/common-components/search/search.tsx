@@ -1,5 +1,7 @@
+"use client";
+import useUsersList from "@/app/network/use-users-list";
 import { Input } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const { Search: AntdSearch } = Input;
 
@@ -9,24 +11,19 @@ export interface ISeach {
 }
 
 export default function Search({ url, result }: ISeach) {
-  const [loading, setLoading] = useState(false);
-  const search = async (value: String) => {
-    console.log(value);
-    setLoading(true);
-    await fetch(url)
-      .then((r) => r.json())
-      .then((data) => result(data))
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  const [searchKey, setSearchKey] = useState("");
+  const { users, loading, error } = useUsersList(searchKey);
+  useEffect(() => {
+    result(users);
+  }, [users]);
   return (
     <div>
       <AntdSearch
         placeholder="input search text"
         size="large"
         loading={loading}
-        onSearch={search}
+        status={error ? "error" : ""}
+        onSearch={setSearchKey}
       />
     </div>
   );

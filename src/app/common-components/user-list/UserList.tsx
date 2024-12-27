@@ -9,7 +9,7 @@ export interface IItem {
 }
 
 export interface IUserList {
-  result: (user: any) => {};
+  result: (user: any) => {} | void;
   list: Array<IItem>;
 }
 
